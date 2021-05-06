@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Dados from './components/dados';
+import React, {useState} from 'react';
 
 function App() {
+
+  const [cantidadDados, setcantidadDados] = useState(1);
+
+ 
+    let dados = [];
+    for (let i = 0; i < cantidadDados; i++) {
+      dados.push(<Dados key={i}/>)
+    }
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>hola</p>
+      <input type="text" placeholder="cantidad de dados" onChange={(e) => 
+        setcantidadDados(e.target.value)}/>
+      {dados}
     </div>
   );
 }
