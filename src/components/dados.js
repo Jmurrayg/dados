@@ -26,7 +26,7 @@ function Dados({id}) {
 
     const primerCara = () =>{
       const check = [...state];
-      console.log(check[id]);
+      //console.log(check[id]);
       if(check[id] === undefined){
         //console.log("vengo del check if")
         const myDice = [...state,{numeroDeCaras: 4}]

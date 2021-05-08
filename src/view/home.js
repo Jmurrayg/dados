@@ -28,26 +28,40 @@ function Home() {
     }
 
     const agregarDado = () =>{
-      const myDados = [...cantidadDados,{numeroDeCaras: 4}];
-      setcantidadDados(myDados)
+      const myDados = [...cantidadDados,{resultado: 0,numeroDeCaras: 4}];
+      setcantidadDados(myDados);
+      setState(myDados);
       //console.log(cantidadDados);
       //console.log(state);
     }
 
+    const quitarDado = () =>{
+      const myDados = [...cantidadDados];
+      const myDadosState = [...state];
+      myDadosState.pop();
+      myDados.pop();
+      //console.log(myDados);
+      setcantidadDados(myDados);
+      setState(myDadosState);
+    }
 
+
+    const totalDados = state.reduce((acc, curr) => acc + curr.resultado, 0);
 
 
   return (
     <div className="App">
-      <p>hola</p>
+      <p>tu total: {totalDados}</p>
       <button onClick={agregarDado}>incrementar dado</button>
+      <button onClick={quitarDado}>quitar un dado</button>
         <div>
           <p>Pick your dice:</p>
-        {cantidadDados.map((numeroDeCaras,index)=>{
+        {cantidadDados.map((numeroDeCaras,index,resultado)=>{
           return <Dados
           key={index}
           id={index}
           numeroDeCaras={numeroDeCaras}
+          resultado={resultado}
           />
         })}
         </div>
